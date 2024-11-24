@@ -30,11 +30,11 @@ A comprehensive backend system for managing employees and HR workflows using the
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/project-name.git
+   git clone https://github.com/ajaykumar2pp/HR-Dashboard-Backend
    ```
 2. Navigate to the project directory:
    ```bash
-    cd hr-management-backend
+    cd hr-backend
    ```
 3. Install dependencies:
    ```bash
@@ -43,28 +43,41 @@ A comprehensive backend system for managing employees and HR workflows using the
 4. Set up environment variables:
    ```bash
    PORT=5000
-   DATABASE_URL=mongodb+srv://<username>:<password>mongodb.net/HR
+   DATABASE_URL=mongodb+srv://<username>:<password>@cluster0.mongodb.net/<database>?retryWrites=true&w=majority
    JWT_SECRET=your_jwt_secret
    ```
-5. Start the development server:
+5. Copy the .env.example file:
+   ```bash
+   cp .env.example .env.development
+   cp .env.example .env.production
+   ```   
+6. Start the development server:
    ```bash
    npm run dev
-   ```
-5. API Documentation:
-   
+   ```   
+7. API Documentation:
     - Access the API docs at http://localhost:5000/api-docs 📖.
   
 
 ## 📁 Project Structure
+```
 hr-management-backend/
+src/
+├── config/              # Configuration files
+│   └── db.config.js     # Database connection configuration
 ├── controllers/         # Route controllers
+│   └── auth.controller.js  # Controller for authentication-related logic
 ├── middlewares/         # Custom middleware
+│   └── auth.middleware.js  # Middleware for authentication and authorization
 ├── models/              # Database models
+│   └── user.model.js    # User schema and model definition
 ├── routes/              # Application routes
-├── utils/               # Helper utilities
+│   └── auth.routes.js   # Routes related to authentication
 ├── .env.example         # Sample environment file
-├── index.js             # Main entry point
-└── README.md            # Documentation
+├── app.js               # Main application setup
+├── index.js             # Main entry point for the server
+├── README.md            # Documentation
+```
 
 
 ## 🚦 API Endpoints
