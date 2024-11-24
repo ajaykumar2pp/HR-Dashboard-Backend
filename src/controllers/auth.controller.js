@@ -1,4 +1,4 @@
-require('dotenv').config()
+const config = require('../config/env.config')
 const User = require('../models/User.model')
 const { validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs')
@@ -65,7 +65,7 @@ exports.login = async (req, res) => {
         // Generate JWT
         const token = jwt.sign(
             { userId: user._id, role: user.role },
-             process.env.JWT_SECRET,
+             config.JWT_SECRET,
             { expiresIn: '2h' } // Token valid for 2 hours
         );
 

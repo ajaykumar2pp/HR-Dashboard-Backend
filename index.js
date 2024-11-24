@@ -1,4 +1,3 @@
-require('dotenv').config()
 const express = require('express')
 const { ConnectDB } = require("./src/config/db.config")
 const authRoutes = require("./src/routes/auth.routes")
@@ -7,7 +6,7 @@ const authRoutes = require("./src/routes/auth.routes")
 const app = express();
 
 
-// ********  serve the static file from the 'public' directory *********//
+// ********  JSON Data parsed *********//
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
@@ -17,13 +16,12 @@ app.use(express.urlencoded({ extended: false }));
 ConnectDB();
 
 
-
 app.get('/', (req, res) => {
     res.redirect('/register');
 });
 
 // ********  Route Setup ***********//
-app.use('/', authRoutes);
+app.use('/api/auth', authRoutes);
 
 
 //*****   404 Error Handling   *******/ 
