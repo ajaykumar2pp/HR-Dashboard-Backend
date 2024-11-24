@@ -18,10 +18,6 @@ ConnectDB();
 
 
 
-
-
-
-
 app.get('/', (req, res) => {
     res.redirect('/register');
 });

@@ -1,5 +1,5 @@
 require('dotenv').config()
-const User = require('../models/User')
+const User = require('../models/User.model')
 const { validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken');
@@ -74,5 +74,10 @@ exports.login = async (req, res) => {
         console.error(err);
         res.status(500).json({ message: 'Server error' });
     }
+}
+
+//Dashboard GET METHOD
+exports.dashboard=(req,res)=>{
+    res.json({ message: `Welcome to the dashboard, ${req.user.role}!` });
 }
 
